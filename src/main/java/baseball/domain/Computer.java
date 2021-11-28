@@ -16,7 +16,7 @@ public class Computer {
 			if (numbers.contains(number)) {
 				continue;
 			}
-			numbers.add(number); // add하면서 자연스럽게 .size()도 카운트++; 됨.
+			numbers.add(number);
 		}
 		return numbers;
 	}
