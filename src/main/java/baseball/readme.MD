@@ -7,9 +7,9 @@
 - [ ] 컴퓨터수 와 플레이어 수 비교하기 - Refree#compare()
     - [ ] 같은 수 있는지 파악하기 - Refree#hasSameNumber()
         - [ ] 같은 수가 전혀 없으면 낫싱 출력
-    - [ ] 같은 수가 있을 때 몇 개가 같은 위치인지 파악하기 - Refree#findSamePositionCount()
-        - [ ] 같은 자리에 있으면 스트라이크로 갯수로 파악 - Refree#countStrike()
-        - [ ] 다른 자리에 있으면 볼 갯수로 파악 - Refree#countBall()
+    - [ ] 같은 수가 있을 때 몇 개가 같은 위치인지 파악하기 - Refree#isStrike()
+        - [ ] 같은 자리에 있으면 스트라이크로 갯수로 파악
+        - [ ] 다른 자리에 있으면 볼 갯수로 파악
         - [ ] n볼 m스트라이크 출력하기
 
 ## 기능 요구 사항
