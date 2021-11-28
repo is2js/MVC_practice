@@ -10,12 +10,12 @@
     - [x] 플레이어 수를 검증하고 변환하는 기능 - Refree#validAndConvertNumbers()
       - [x]물어본 숫자 검증해서 유효하지 않으면 에러 내기, 그렇지 않으면 숫자로 변환하기
       - 검증내역: 3글자 입력인지 / 숫자 입력인지 / 서로 다른수 맞는지 
-- [ ] 컴퓨터수 와 플레이어 수 비교하기 - Refree#compare()
-    - [ ] 같은 수 있는지 파악하기 - Refree#countSameNumber()
-        - [ ] 같은 수가 전혀 없으면(countSameNumber() = 0) 낫싱 출력
-    - [ ] 같은 수가 있을 때(countSameNumber() >= 1) 몇 개가 같은 위치인지 파악하기 - Refree#countStrike()
-        - [ ] 같은 자리에 있으면 스트라이크로 갯수로 파악
-        - [ ] 다른 자리에 있으면 볼 갯수로 파악
-        - [ ] n볼 m스트라이크 출력하기
+- [x] 컴퓨터수 와 플레이어 수 비교하기 - Refree#compare()
+    - [x] 같은 수 있는지 파악하기 - Refree#countSameNumber()
+        - [x] 같은 수가 전혀 없으면(countSameNumber() = 0) 낫싱 출력
+    - [x] 같은 수가 있을 때(countSameNumber() >= 1) 몇 개가 같은 위치인지 파악하기 - Refree#countStrike()
+        - [x] 같은 자리에 있으면 스트라이크로 갯수로 파악
+        - [x] 다른 자리에 있으면 볼 갯수로 파악
+        - [x] n볼 m스트라이크 출력하기
 
 ## 기능 요구 사항
