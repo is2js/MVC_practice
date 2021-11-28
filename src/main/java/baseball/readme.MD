@@ -2,8 +2,9 @@
 
 ## 기능 구현 목록
 
-- [ ] 1에서 9까지 서로 다른 임의의 수 3개(컴퓨터 수)를 생성하기 - Computer#createRandomNumbers()
-- [ ] 1에서 9까지 서로 다른 임의의 수 3개(플레이어 수)를 입력받기 - Player#getInputNumbers()
+- [x] 3스트라이크가 나올때까지 반복해서 입력받기 - Controller#run()
+- [x] 1에서 9까지 서로 다른 임의의 수 3개(컴퓨터 수)를 생성하기 - Computer#createRandomNumbers()
+- [ ] 1에서 9까지 서로 다른 임의의 수 3개(플레이어 수)를 입력받기 - Player#askNumbers()
 - [ ] 컴퓨터수 와 플레이어 수 비교하기 - Refree#compare()
     - [ ] 같은 수 있는지 파악하기 - Refree#hasSameNumber()
         - [ ] 같은 수가 전혀 없으면 낫싱 출력
