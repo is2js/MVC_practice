@@ -1,24 +1,15 @@
-plugins {
-    id 'java'
-}
+apply plugin: 'java'
+apply plugin: 'eclipse'
 
-group 'org.example'
 version = '1.0.0'
 sourceCompatibility = 1.8
-compileJava.options.encoding = 'UTF-8'
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
+
 repositories {
-    //우형추가
     maven { url 'https://jitpack.io' }
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    //우형추가
     implementation('com.github.woowacourse-projects:mission-utils:1.0.0')
 }
 
