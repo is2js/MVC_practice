@@ -5,19 +5,26 @@ import java.util.List;
 
 public class Refree {
 
+	public static final int ZERO = 0;
+	public static final int ONE = 1;
+	public static final String NOTHING = "낫싱";
+	public static final String BALL = "볼";
+	public static final String STRIKE = "스트라이크";
+	public static final int LIMITED_LENGTH = 3;
+
 	public String compare(List<Integer> computerNumbers, List<Integer> playerNumbers) {
 		int sameNumberCount = countSameNumber(computerNumbers, playerNumbers);
-		if (sameNumberCount == 0) {
-			return "낫싱";
+		if (sameNumberCount == ZERO) {
+			return NOTHING;
 		}
 		int strikeCount = countStrike(computerNumbers, playerNumbers);
 		int ballCount = sameNumberCount - strikeCount;
 
 		StringBuffer result = new StringBuffer();
-		if (ballCount >= 1) {
-			result.append(ballCount + "볼 ");
+		if (ballCount >= ONE) {
+			result.append(ballCount + BALL + " ");
 		}
-		return result.append(strikeCount + "스트라이크").toString();
+		return result.append(strikeCount + STRIKE).toString();
 	}
 
 	private int countStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
@@ -49,7 +56,7 @@ public class Refree {
 	}
 
 	private List<Integer> validAndConvertNumbers(String stringNumbers) {
-		if (stringNumbers.length() !=3 ) {
+		if (stringNumbers.length() != LIMITED_LENGTH) {
 			throw new IllegalArgumentException("3자를 입력해주세요.");
 		}
 
@@ -75,7 +82,6 @@ public class Refree {
 				Integer integerNumber = Integer.valueOf(stringNumber);
 				playerNumbers.add(integerNumber);
 			} catch (NumberFormatException e) {
-				// System.err.println(e);
 				throw new IllegalArgumentException("숫자를 입력해주세요.");
 			}
 		}
