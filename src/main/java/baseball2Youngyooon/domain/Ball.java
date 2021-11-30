@@ -4,8 +4,6 @@ public class Ball {
 	private Index index;
 	private Number number;
 
-	// 생성자를 private하게 하고 -> of 스태틱메소드로 생성하도록 한다.
-	// public Ball(int index, int number) {
 	private Ball(int index, int number) {
 		this.index = new Index(index);
 		this.number = new Number(number);
