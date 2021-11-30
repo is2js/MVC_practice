@@ -41,7 +41,6 @@ class BallTest {
 		assertThat(actual).isEqualTo(expected);
 	}
 
-	//5. 한꺼번에 테스트해보자.
 	@DisplayName("스트라이크 여러 케이스 테스트")
 	@ParameterizedTest
 	@CsvSource({"0,1,0,1", "1,0,1,0"})
@@ -54,4 +53,6 @@ class BallTest {
 
 		assertThat(actual).isEqualTo(expected);
 	}
+
+	//
 }

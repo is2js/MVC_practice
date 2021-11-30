@@ -1,34 +1,45 @@
 package baseball2Youngyooon.domain;
 
-//1. 위치(index)를 가진 숫자(number)를 class객체로 만든다.
 public class Ball {
-	private int index;
+	// 1.예외처리 등 추가작업이 필요한 원시변수(int) 클래스로 감싸서 객체로 만든다.
+	// -> 이전(trade)에는 string money -> int money로 변환등의 추가작업이 필요해 class로 만들었었다.
+	private Index index;
 	private int number;
 
-	// 2. 생성자는 2변수 모두 받아서 똑같이 만들되, private하게 아무대서나 못만들게 한다.
 	public Ball(int index, int number) {
-		this.index = index;
+		//8. 생성자의 파라미터는 그대로 받게 하는데
+		// -> 내부에서 new 포장된원시타입객체를 생성하게해서 넘겨준다.
+		// -> index는 따로 of로 생성안하나보다...
+		this.index = new Index(index);
 		this.number = number;
 	}
 
-	// 3. 객체생성(생성자호출)을 static of 메서드로 생성후 해당객체 반환하게 하자.
-	// -> 파라미터는 생성자랑 똑같이 다받으나, 생성을 생성자가 아닌 of스태틱메서드 호출로 호출시마다 생성
-	// -> of 스태틱메서드는 해당객체ClassType을 반환하게 한다.
 	static Ball of(int index, int number) {
 		return new Ball(index, number);
 	}
 
-	// 4. 객체의 기능후 (정해진 범위내)결과값을 enum을 반환하게 메서드를 작성하자.
-	// -> 핵심로직 메서드를 최소단위객체를 직접 받게 한다.
-	// -> 최소단위객체.메서드로()로 쓰일 인스턴스메서드지만, 최소단위객체끼리 비교시는 파라미터로 해당 객체를 받게 만든다.
 	Score compare(Ball ball) {
-		if (this.index == ball.index && this.number == ball.number) {
+		if (isStrike(ball)) {
 			return Score.STRIKE;
 		}
-		if (this.index != ball.index && this.number == ball.number) {
+		if (isBall(ball)) {
 			return Score.BALL;
 		}
 		return Score.NOTHING;
+	}
+
+	private boolean isBall(Ball ball) {
+		// 9. 포장된원시타입변수는 equals도 오버라이딩 해줬으니
+		// -> 직접 꺼내서 비교하지말자. 원래는 this.index(Index).index or
+		// -> 포장된원시타입은 한번더 거쳐서 들어가야하므로 엄청 복잡한데
+		// -> 아예 직접안꺼내고 비교되도록 equals를 정의한 듯 싶다.
+		// return this.index != ball.index && this.number == ball.number;
+		return !this.index.equals(ball.index) && this.number == ball.number;
+	}
+
+	private boolean isStrike(Ball ball) {
+		// return this.index == ball.index && this.number == ball.number;
+		return this.index.equals(ball.index) && this.number == ball.number;
 	}
 
 }
