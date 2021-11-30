@@ -9,7 +9,7 @@ public class Scores {
 		this.scores = scores;
 	}
 
-	public static Scores of(List<Score> scores) {
+	public static Scores from(List<Score> scores) {
 		return new Scores(scores);
 	}
 
@@ -18,9 +18,18 @@ public class Scores {
 			.filter(Score::isStrike)
 			.count();
 	}
+
 	public int getBallCount() {
 		return (int)this.scores.stream()
 			.filter(Score::isBall)
 			.count();
+	}
+
+	public boolean hasBall() {
+		return this.scores.stream().anyMatch(Score::isBall);
+	}
+
+	public boolean hasStrike() {
+		return this.scores.stream().anyMatch(Score::isStrike);
 	}
 }
