@@ -2,6 +2,8 @@ package baseball2Youngyooon.controller;
 
 import org.junit.jupiter.api.Test;
 
+import baseball2Youngyooon.domain.Computer;
+
 class ComputerTest {
 
 	@Test
