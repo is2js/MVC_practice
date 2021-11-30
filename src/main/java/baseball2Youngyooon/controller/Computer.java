@@ -3,10 +3,11 @@ package baseball2Youngyooon.controller;
 import java.util.LinkedHashSet;
 
 import baseball2Youngyooon.domain.Balls;
+import baseball2Youngyooon.domain.Result;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
-	//1. private static scanner객체를 public static 으로 꺼내쓰듯, controller메서드 가동용 객체Computer도
+	//1. private static scanner객체를 public static 으로 꺼내쓰듯, controller가 단순반복시킬동안 계속 떠있는 메인로직 가동용 객체Computer도 static으로 싱글톤화한다.
 	//  클래스내부에 private static으로 new객체를 생성해놓고 -> public static 메서드 getInstance()로 가져온다. (싱글톤?)
 	private static Computer computer = new Computer();
 	private Balls balls;
@@ -44,5 +45,11 @@ public class Computer {
 		//7. stream으로 list급 hashset을  .stream()-> 찢어서string변환 -> reduce로 문자열 누적합 -> get()로 누적합해서 문자열숫자를 뭉칠 수 있음.
 		return hashSet.stream().map(Object::toString).reduce((a,b)->a+b).get();
 	}
+	//8. 랜덤숫자생성 및 들어오는 playerball과의 비교를 한다.
+	// -> 메인로직이 있는 객체다. Controller가 계속띄울 객체. -> 싱글톤임.
+	public Result matchBalls(Balls inputBalls) {
+		return balls.compare(inputBalls);
+	}
+
 
 }
