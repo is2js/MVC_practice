@@ -53,7 +53,6 @@ public class Result {
 		return this.result.stream().anyMatch(Scores::hasBall);
 	}
 
-	//1. isThreeStrike는 따로구현 for 게임종료의 조건이라서 public으로 따로 구현 -> 테스트에서 확인
 	public boolean isThreeStrike() {
 		return getStrikeSum() == 3;
 	}

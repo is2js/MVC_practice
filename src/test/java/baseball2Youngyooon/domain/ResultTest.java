@@ -21,7 +21,6 @@ class ResultTest {
 		assertThat(report).isEqualTo(expected);
 	}
 
-	//2.
 	@ParameterizedTest
 	@CsvSource({"123,true", "321,false", "456,false"})
 	@Test
