@@ -29,8 +29,8 @@ class ResultTest {
 		Balls myBalls = Balls.from(numbers);
 		Result result = myBalls.compare(comBalls);
 
-		boolean threeStrike = result.isThreeStrike();
+		// boolean threeStrike = result.isThreeStrike();
 
-		assertThat(threeStrike).isEqualTo(expected);
+		assertThat(result.is3Strike()).isEqualTo(expected);
 	}
 }

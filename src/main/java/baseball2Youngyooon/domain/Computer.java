@@ -28,9 +28,7 @@ public class Computer {
 		return hashSet.stream().map(Object::toString).reduce((a, b) -> a + b).get();
 	}
 
-	//5. 외부에서 사용될 예정인 준 컨트롤러 메서드는 input으로 String을 받게한다.
 	public Result matchBalls(String inputBalls) {
-		//6. Balls.from으로 Balls객체끼리 비교하도록 하자.
 		return balls.compare(Balls.from(inputBalls));
 	}
 

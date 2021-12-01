@@ -56,4 +56,8 @@ public class Result {
 	public boolean isThreeStrike() {
 		return getStrikeSum() == 3;
 	}
+
+	public boolean is3Strike() {
+		return this.getStrikeSum() == 3;
+	}
 }
