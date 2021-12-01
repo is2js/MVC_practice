@@ -6,35 +6,41 @@ import baseball2Youngyooon.view.InputView;
 import baseball2Youngyooon.view.OutputView;
 
 public class Controller {
-	public void runGame() {
+	//1. 재시작을 새롭게 runGame()한다는 개념 -> 모든 게임마다 계속떠있는 싱글톤 computer객체는..
+	// -> 게임을 돌리는 것보다 더 바깥에 떠있어야한다.
+	// my)싱글톤객체는 게임돌아가는 것보다 훨씬 먼저 생성, 더 윗단계에 있다.
+	// -> 게임마다 처리하려고, 싱글톤이지만, init()메소드를 정의한 것 같다.ㄴ
+	Computer computer = Computer.getInstance();
+	//computer.init(); // 이것 매 게임마다 시작할때 해줘야하는 것..?
 
-		Computer computer = Computer.getInstance();
+	public void runGame() {
+		// 매 게임마다 싱글톤객체가 초기화해줘야하는 부분을 초기화해준다.
 		computer.init();
 
-		//1. 업데이트되는 결과값변수-> 조건변수는 while문 위로 빼서 초기화하자.
-		// -> 할수있다면, 조건을 while ( !조건 )으로 옮겨보자. -> 결과값변수를 초기화할 수가.... Balls vs Balls 비교해야 들어가는거라
-		// -> 못옮긴다면, 업데이트 직후 -> if break로 위치시킨다.
-
-		//3. status변수는 일단 while문위에서 true로 초기화 해놓고 -> while문에 넣는다.
-		// -> true도 상수화할 예정임.
-		boolean gameStatus = true;
-		// while (true) {
-		while (gameStatus) {
+		// boolean gameStatus = true;
+		//4. 아무리 생각해도.. 리게임여부는... runGame()안에서 판단해야할 것 같다.
+		// -> restart도 true초기화 status변수를 활용한다.
+		// -> while조건문에 직접적으로 넣어야한다.
+		String restartGame = "1";
+		//게임결과로 바로 종료가 아니라면, while문의 조건절은 사용자입력을 받는 문자열Status변수에게 양보
+		// while (gameStatus) {
+		while (restartGame.equals("1")) {
 			OutputView.printInputInstruction();
 			Result result = computer.matchBalls(InputView.getInput());
-			OutputView.printResult(result.report());
-			//2. while true -> if 의 2 indent를 줄이려면, if절을 boolean함수화
-			// -> status변수로서, 위에서 true로 초기화하고, 사용자에게 break에 해당하는 입력( while(false))을 받던지, 게임결과로 break에 해당하는 입력을 바게 한다.
-			// if (result.is3Strike()) {
-			// 	break;
-			// }
-			//4. while문을 멈추게하는 [status에 false 넣기]를 업데이트되는 결과값변수 -> 결과값변수.is그만둬야되지?() -> 그 때 false로 들어가도록 짠다.
-			// 1) result.is3Strike() -> true일 때 break되어야함
-			// 2) !result.is3Strike() -> falses가됨. -> status변수에 넣기
-			gameStatus = !result.is3Strike();
-			
-		}
 
+			OutputView.printResult(result.report());
+			// gameStatus = !result.is3Strike();
+			//5. 게임끝났을때 추가분기문 때문에 어쩔수없이 if문이..?
+			restartGame = askRestart(restartGame, result);
+		}
+	}
+
+	private String askRestart(String restartGame, Result result) {
+		if (result.is3Strike()) {
+			OutputView.printRestartInstrunction();
+			restartGame = InputView.getInput();
+		}
+		return restartGame;
 	}
 
 }
