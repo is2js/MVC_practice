@@ -11,4 +11,8 @@ public class Util {
 			.boxed()
 			.collect(Collectors.toList());
 	}
+
+	public static int ConvertStrToInt(String number) {
+		return Integer.parseInt(number);
+	}
 }
