@@ -11,25 +11,30 @@ public class Controller {
 		Computer computer = Computer.getInstance();
 		computer.init();
 
-		while (true) {
+		//1. 업데이트되는 결과값변수-> 조건변수는 while문 위로 빼서 초기화하자.
+		// -> 할수있다면, 조건을 while ( !조건 )으로 옮겨보자. -> 결과값변수를 초기화할 수가.... Balls vs Balls 비교해야 들어가는거라
+		// -> 못옮긴다면, 업데이트 직후 -> if break로 위치시킨다.
+
+		//3. status변수는 일단 while문위에서 true로 초기화 해놓고 -> while문에 넣는다.
+		// -> true도 상수화할 예정임.
+		boolean gameStatus = true;
+		// while (true) {
+		while (gameStatus) {
 			OutputView.printInputInstruction();
 			Result result = computer.matchBalls(InputView.getInput());
-			//1. 메인로직의 결과도 OutputView에서 뿌려주도록 -> 결과객체X 결과String만 전달
 			OutputView.printResult(result.report());
-			//2. 매번 업데이트될 결과값변수(조건변수) result에 대해 if () {break;}절에서
-			// -> 조건변수(업데이트 되는 결과값 변수)로 1) break;조건 찾고  .equals() or   ==    -> 2) 메소드로 if조건절내용을  클래스안에서 메소드()로 리팩토링
-			// -> String으로 찾기보다는, 숫자, 특히 갯수로 파악할 수 있음 그걸로 하는데,
-			// -> 결과변수도 타클래스라서 관련 숫자뽑으려면 result.get써야한다면? -> 메세지를 보내자(보내서 t/f로 받자 -> isXX) -> 필요한 값을 파라미터로 주든지해서(상수아니면), 가지고 가서 Class내에서 메소드를 정의하자. 자체해결임.
-			// -> 외부에서 ctrl+ alt + M하면, 외부에 함수가 생기니 조심 -> [객체 자체 확인가능한 조건절이면, 객체Class 내부에서 처리되도록 변수는 파라미터로 넘겨서 처리한다]
-			// -> result객체. 메소드로()로 작성해놓고 메소드에서 리팩토링하자. 객체도 묶어서 리팩토링하면, 외부 거기서 메소드 작성됨.
-			// if(result.getStrikeSum() ==3 ) {
-			if(result.is3Strike()) {
-				break;
-			}
-
+			//2. while true -> if 의 2 indent를 줄이려면, if절을 boolean함수화
+			// -> status변수로서, 위에서 true로 초기화하고, 사용자에게 break에 해당하는 입력( while(false))을 받던지, 게임결과로 break에 해당하는 입력을 바게 한다.
+			// if (result.is3Strike()) {
+			// 	break;
+			// }
+			//4. while문을 멈추게하는 [status에 false 넣기]를 업데이트되는 결과값변수 -> 결과값변수.is그만둬야되지?() -> 그 때 false로 들어가도록 짠다.
+			// 1) result.is3Strike() -> true일 때 break되어야함
+			// 2) !result.is3Strike() -> falses가됨. -> status변수에 넣기
+			gameStatus = !result.is3Strike();
+			
 		}
 
 	}
-
 
 }
