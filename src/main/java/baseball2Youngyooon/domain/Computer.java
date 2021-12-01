@@ -15,7 +15,6 @@ public class Computer {
 		return computer;
 	}
 
-	// 싱글톤 객체생길때가 아니라, 매 게임마다(비교마다) 새롭게 초기화해주는 코드들을 init()으로 직접호출하게 한다.
 	public void init() {
 		// balls = Balls.from(makeRandomNumbers());
 		balls = Balls.from("123");

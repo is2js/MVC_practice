@@ -28,17 +28,33 @@ public class Result {
 
 	public String report() {
 		StringBuilder reportString = new StringBuilder();
-		if (hasBall()) {
-			reportString.append(this.getBallSum() + "볼" + " ");
-		}
-		if (hasStrike()) {
-			reportString.append(this.getStrikeSum() + "스트라이크");
-		}
-		if (isNothing()) {
-			reportString.append("낫싱");
-		}
-
+		//3. if분기마다 메소드화하기 -> String을 return해주면 그걸 append하면 됨
+		// -> 분기시에 바깥변수가 들어간다면, 파라미터로 받지말고, 바깥변수가 필요로하는 요소만  return해주도록 수정한다.
+		reportString.append(reportBall());
+		reportString.append(reportStrike());
+		reportString.append(reportNothing());
 		return reportString.toString().trim();
+	}
+
+	private String reportNothing() {
+		if (isNothing()) {
+			return "낫싱";
+		}
+		return "";
+	}
+
+	private String reportStrike() {
+		if (hasStrike()) {
+			return this.getStrikeSum() + "스트라이크";
+		}
+		return "";
+	}
+
+	private String reportBall() {
+		if (hasBall()) {
+			return this.getBallSum() + "볼" + " ";
+		}
+		return "";
 	}
 
 	private boolean isNothing() {
