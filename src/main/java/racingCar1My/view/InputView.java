@@ -1,4 +1,4 @@
-package racingCar1Youngyoon.view;
+package racingCar1My.view;
 
 import java.util.Arrays;
 import java.util.List;
@@ -104,24 +104,31 @@ public class InputView {
 	}
 
 	public static Integer getCount() {
-		return 0;
-	}
-
-	private static boolean checkCountValidation(String input) {
-		if (checkFormat(input) && checkRange(input)) {
-			return true;
+		// 15. 마찬가지로 오류시 반복호출되려면
+		// -> try ( thr검증, return 원래 값) catch () (에러메세지 + return 재귀호출() )
+		try {
+			String input = Console.readLine();
+			input = removeSpace(input);
+			checkCountValidation(input);
+			return Integer.parseInt(input);
+		} catch (IllegalArgumentException e) {
+			OutputView.printError(e);
+			return getCount();
 		}
-		return false;
 	}
 
-	private static boolean checkFormat(String input) {
+	private static void checkCountValidation(String input) {
+		checkNull(input);
+		checkFormat(input);
+	}
+
+	private static void checkFormat(String input) {
 		// 6. 대박 string에 chars를 붙이면, IntStraem이다!!
 		// -> char매직으로서, allMatCh(Character::isDigit)를 쓸 수 있따.
-		return input.chars()
-			.allMatch(Character::isDigit);
-	}
-
-	private static boolean checkRange(String input) {
-		return false;
+		//16. 대박2
+		if (!(input.chars()
+			.allMatch(Character::isDigit))) {
+			throw new IllegalArgumentException("시도 횟수는 숫자여야 한다.");
+		}
 	}
 }

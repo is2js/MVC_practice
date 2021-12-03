@@ -1,6 +1,6 @@
-package racingCar1Youngyoon;
+package racingCar1My;
 
-import racingCar1Youngyoon.controller.Controller;
+import racingCar1My.controller.Controller;
 
 public class Application {
 	public static void main(String[] args) {

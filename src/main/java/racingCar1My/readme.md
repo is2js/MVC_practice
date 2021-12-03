@@ -1,9 +1,9 @@
 ## 기능 구현 목록
 
-- [ ] 자동차 이름 및 시행 횟수 입력 받기
+- [x] 자동차 이름 및 시행 횟수 입력 받기
     - [x] 자동차 이름 검증하여 입력받기 InputView#getNames()
-    - [ ] 시행 횟수 검증하여 입력 받기 InputView#getCounts()
-    - [ ] 자동차 이름 5자 이하 검증하기 Util#
+    - [x] 시행 횟수 검증하여 입력 받기 InputView#getCounts()
+    - [x] 자동차 이름 5자 이하 검증하기 InputView#checkValidation()
 - [ ] 자동차 전진 또는 멈춤 판단하기 Car#isMovable
     - [ ] 무작위 값을 구한 후 무작위 값이 4 이상인지 확인하기
 - [ ] 자동차 경주 게임을 완료한 후 누가 우승했는지 확인하기 Cars#findWinners()
