@@ -1,7 +1,7 @@
 ## 기능 구현 목록
 
 - [ ] 자동차 이름 및 시행 횟수 입력 받기
-    - [ ] 자동차 이름 검증하여 입력받기 InputView#getNames()
+    - [x] 자동차 이름 검증하여 입력받기 InputView#getNames()
     - [ ] 시행 횟수 검증하여 입력 받기 InputView#getCounts()
     - [ ] 자동차 이름 5자 이하 검증하기 Util#
 - [ ] 자동차 전진 또는 멈춤 판단하기 Car#isMovable
