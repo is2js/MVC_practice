@@ -22,4 +22,8 @@ public class OutputView {
 	public static void printNameNullError() {
 		System.out.println(ERROR_MESSAGE + "각 이름은 빈칸이면 안된다.");
 	}
+
+	public static void printError(IllegalArgumentException e) {
+		System.out.println(ERROR_MESSAGE + e);
+	}
 }
