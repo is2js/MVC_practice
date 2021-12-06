@@ -7,11 +7,11 @@
 - [ ] 자동차 전진 또는 멈춤 판단하기 Car#isMovable
     - [ ] 무작위 값을 구한 후 무작위 값이 4 이상인지 확인하기
 - [ ] 자동차 경주 게임을 완료한 후 누가 우승했는지 확인하기 Cars#findWinners()
-    - [ ] 단독 우숭자 vs 여러명 우숭자 판단하기 Cars#isWinnerMoreThanTwo()
-        - 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분
+    - ~~[ ] 단독 우숭자 vs 여러명 우숭자 판단하기 Cars#isWinnerMoreThanTwo()~~
+        - ~~우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분~~
 - [ ] 자동차 결과 출력하기 OutputView#printResult()
 - [ ] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생 시킨 뒤 "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받기
-  OutputView#printException
+  OutputView#printError()
     - [ ] 에러발생 상황시 게임 재시작하기 RacingGame#runGame()
 
 ## 그외 요구사항 체크리스트(과제수행간 계속 추가예정)

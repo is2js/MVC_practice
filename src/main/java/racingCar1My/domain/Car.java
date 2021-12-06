@@ -1,5 +1,7 @@
 package racingCar1My.domain;
 
+import java.util.stream.IntStream;
+
 import racingCar1My.utils.Util;
 
 /**
@@ -8,7 +10,7 @@ import racingCar1My.utils.Util;
  * name, position 변수의 접근 제어자인 private을 변경할 수 없다.
  * 가능하면 setPosition(int position) 메소드를 추가하지 않고 구현한다.
  */
-public class Car {
+public class Car implements Comparable<Car> {
 	private final String name;
 	private int position = 0;
 
@@ -48,8 +50,21 @@ public class Car {
 		return this.name;
 	}
 
+	public String getHyphen() {
+		return IntStream.range(0, this.position)
+			.mapToObj((i) -> "-")
+			.reduce((a, b) -> (a + b))
+			.orElse(""); // reduce -> get의 결과는 Optional이라.. orElse( default값 ) 지정안해주면, NoSuchElement에러난다. get()대신 orElse("") ;
+	}
+
+	@Override
+	public int compareTo(Car o) {
+		return Integer.compare(this.position, o.getPosition());
+	}
+
 	// // 추가 기능 구현
 	// pobi : --
 	// woni : ----
 	// jun : ---
+
 }

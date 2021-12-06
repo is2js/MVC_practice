@@ -1,5 +1,6 @@
 package racingCar1My.domain;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +30,7 @@ public class RacingGame {
 		this.cars.moveCars();
 	}
 
-	public void setCars(Cars cars) {
+	public void insertCars(Cars cars) {
 		this.cars = cars;
 	}
 
@@ -43,5 +44,9 @@ public class RacingGame {
 			.map(Car::getName)
 			.collect(Collectors.toList());
 		return winnerNames;
+	}
+
+	public LinkedHashMap<String, String> getRound() {
+		return this.cars.getRound();
 	}
 }

@@ -1,5 +1,6 @@
 package racingCar1My.view;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class OutputView {
@@ -14,7 +15,7 @@ public class OutputView {
 	}
 
 	public static void printError(IllegalArgumentException e) {
-		System.out.println(ERROR_MESSAGE + e);
+		System.out.println(ERROR_MESSAGE + e.getMessage());
 	}
 
 	public static void printInputCountInstruction() {
@@ -29,5 +30,12 @@ public class OutputView {
 
 	public static void printWinners(List<String> winnerNames) {
 		System.out.println("최종 우승자 : " + String.join(",", winnerNames));
+	}
+
+	public static void printThisRound(LinkedHashMap<String, String> round) {
+		for (String s : round.keySet()) {
+			System.out.println(s + " : " + round.get(s));
+		}
+		System.out.println();
 	}
 }
