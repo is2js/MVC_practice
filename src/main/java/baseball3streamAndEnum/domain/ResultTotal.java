@@ -26,14 +26,9 @@ public class ResultTotal {
 
 	public int getStrikeCount() {
 		return this.resultTotal.stream()
-			//  [개념]14
-			// 숫자세기전! fiter부터 해볼 것?! -> 1개라도 있으면 -> mapToInt로 숫자로 return받을 것이ㅣㄴ.. 미리 조사해야된다!!ㄴ
-			// filter를 걸어주면, 없으면 알아서 mapToInt-> sum()이 0으로 출력된다!!
-			// .mapToInt(resultList -> resultList.getStrikeCount())
 			.filter(resultList -> resultList.hasStrike())
 			.mapToInt(resultList -> resultList.getStrikeCount())
 			.sum();
-
 	}
 
 	public int getBallCount() {

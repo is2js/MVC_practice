@@ -61,6 +61,7 @@ public class Expression {
 	}
 
 	private static void checkOperators(String removedSpaceInput) {
+
 		String operators = Util.removeDigit(removedSpaceInput, "[0-9]");
 		//6. 남은 연산자들이 4개 중 1개 인지 검사해야한다.
 		// -> 4개를 삭제 -> 다른 기호가 남아있다면 == ""빈스트링 아니라면, 잘못된 기호가 있는 것

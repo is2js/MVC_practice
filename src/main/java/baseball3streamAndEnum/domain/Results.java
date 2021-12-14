@@ -21,8 +21,6 @@ public class Results {
 	}
 
 	public boolean hasStrike() {
-		// 아직 결과값List 의 일급컬렉션이라면
-		// -> has를 contains가 아닌 stream타고 또물어볼 수 있다.
 		return this.results.stream()
 			.anyMatch(result -> result.isStrike());
 
